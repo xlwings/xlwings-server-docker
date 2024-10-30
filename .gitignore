@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+.parcel-cache/
+*.pyc
+*.pem
+*.bat
+.env
+.idea/
+.coverage
+scratch*
+docs/_build/

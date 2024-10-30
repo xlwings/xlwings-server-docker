@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+       gunicorn app.main:main_app
+       --bind 0.0.0.0:8000
+       --keyfile /project/certs/localhost+2-key.pem
+       --certfile /project/certs/localhost+2.pem
+       --access-logfile -
+       --workers 2
+       --worker-class uvicorn.workers.UvicornWorker
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./certs:/project/certs
+    environment:
+      XLWINGS_LICENSE_KEY: TODO
+      XLWINGS_ENVIRONMENT: prod
+      XLWINGS_ENABLE_SOCKETIO: false
